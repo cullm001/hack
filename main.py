@@ -1,6 +1,7 @@
 import pygame
 import math
 import random
+import time
 pygame.init()
 
 screen = pygame.display.set_mode((800, 800))
@@ -8,6 +9,8 @@ pygame.display.set_caption("Space Invaders")
 
 icon = pygame.image.load("rocket-launch.png")
 pygame.display.set_icon(icon)
+
+#timer = 
 
 playerImg = pygame.image.load('battleship.png')
 Player_size = (200,200)
@@ -53,13 +56,13 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
         return True
     return False
 
-def obstacle(obs_starty, obs_startx, obs):
+def obstacle(obs_startx, obs_starty, obs):
     obs_pic = pygame.image.load("fire.png")
     screen.blit(obs_pic,(obs_startx, obs_starty))
 
 running = True
-
-
+obs_startx = random.randrange(0, 800)
+obs_starty = 60
 while running:
 
     screen.fill((0, 0, 0))
@@ -67,8 +70,8 @@ while running:
     obstacle_speed = 6
     obs =0
     y_change = 0
-    obs_startx = random.randrange(0, 800)
-    obs_starty = 60
+    
+    
 
 
     obs_width = 15
@@ -128,11 +131,12 @@ while running:
     
     obstacle(obs_startx, obs_starty,obs)
     obs_starty+=obstacle_speed
-    if obs_starty >700: 
-      obs_starty= 0
+    #print(obs_starty)
+    print(obs_startx)
+    if obs_starty >500: 
       obs_startx=random.randrange(0,800)
-      print("NEW")
-      print(random.randrange(0,800))
+      #print("NEW")
+      #print(random.randrange(0,800))
       obs=random.randrange(0,7)
       
 
